@@ -4,6 +4,7 @@ import smtplib
 from email.mime.text import MIMEText
 from email.header import Header
 import datetime
+import json
 import openai
 
 
@@ -47,7 +48,8 @@ def button_def():
     }
 
     response = requests.post(url, headers=headers, json=prompt)
-    a = response.text
+    result = json.loads(response.text)
+    a = result["result"]["alternatives"][0]["message"]["text"]
 
 
 
@@ -70,6 +72,7 @@ def button_def():
             return f'{ex}'
         finally:
             serv.quit()
+            print("the email has been sent")
             create_file(message=message)
 
 
@@ -78,11 +81,10 @@ def button_def():
         date = datetime.date.today()
         time = f'{datetime.datetime.now().time()}'.split(sep=".")
         time = time[0].replace(':', '-')
-        print(time)
-        print(date)
-        file = open(f'message-{date}-{time}.txt', 'w')
+        name_file = f"message-{date}-{time}.txt"
+        file = open(f'logs/{name_file}', 'w')
         file.write(f'{message}')
-        print(f"created file -> message-{date}-{time}.txt")
+        print(f"created file -> {name_file}")
 
     def main(a):
         send_massage(recipients='zadjek@yandex.ru', message=a)
