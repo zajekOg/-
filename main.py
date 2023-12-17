@@ -5,7 +5,7 @@ from email.mime.text import MIMEText
 from email.header import Header
 import datetime
 import json
-import openai
+
 
 
 app = customtkinter.CTk()
