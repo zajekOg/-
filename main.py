@@ -6,7 +6,7 @@ from email.header import Header
 import datetime
 import json
 
-#перед использованием прочитайте Readmy.md
+#перед использованием прочитайте README.md
 #перед использованиеи создайте директорию (папку) под названием "logs"
 
 app = customtkinter.CTk()
