@@ -28,7 +28,7 @@ def button_def():
 
     import requests
     prompt = {
-        "modelUri": "gpt://b1grcub10vnjh5a7uee9/yandexgpt-lite",
+        "modelUri": "gpt://<your_akk_idendef_token>/yandexgpt-lite",
         "completionOptions": {
             "stream": False,
             "temperature": 0.6,
@@ -45,7 +45,7 @@ def button_def():
     url = "https://llm.api.cloud.yandex.net/foundationModels/v1/completion"
     headers = {
         "Content-Type": "application/json",
-        "Authorization": "Api-Key AQVN2svtecutTD02vxY4-Ldnx3whi1zvCMPOAu7D"
+        "Authorization": "Api-Key <your_api_key>"
     }
 
     response = requests.post(url, headers=headers, json=prompt)
@@ -56,8 +56,8 @@ def button_def():
 
 
     def send_massage(recipients, message):
-        sender = "zadjek@yandex.ru"
-        password = "lomonosov901"
+        sender = "<your_mail>"
+        password = "<your_paassword>"
         msg = MIMEText(f'{message}', 'plain', 'utf-8')
         msg['Subject'] = Header(f'Письмо деду морозу!', 'utf-8')
         msg['From'] = sender
